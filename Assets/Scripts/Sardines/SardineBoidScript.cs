@@ -17,7 +17,7 @@ public class SardineBoidScript : MonoBehaviour {
 	void Update () {
 		Miru ();
 		Maneru ();
-		iwasirigid.velocity= transform.forward * speed;
+		iwasirigid.linearVelocity= transform.forward * speed;
 	}
 
 
