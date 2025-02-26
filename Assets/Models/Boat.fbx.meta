@@ -21,8 +21,8 @@ ModelImporter:
     second: {fileID: 2100000, guid: aebe93966bf343747a0609ed48dcd4df, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 1
-    materialSearch: 0
+    materialName: 2
+    materialSearch: 1
     materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
@@ -31,6 +31,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
