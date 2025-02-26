@@ -18,6 +18,6 @@ public class IwasiMove : MonoBehaviour {
 			iwasirigid.AddTorque(Vector3.up  * rotateSpeed);
 		}
 
-		iwasirigid.linearVelocity= transform.forward * speed;
+		iwasirigid.velocity= transform.forward * speed;
 	}
 }

@@ -22,7 +22,6 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - DepthOnly
-  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -67,7 +66,6 @@ Material:
     - _FoamColor: {r: 0.3537736, g: 0.93883175, b: 1, a: 0.6117647}
     - _ShallowColor: {r: 0, g: 0.5073271, b: 1, a: 0.3764706}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &6299928894235180902
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -80,4 +78,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 7
