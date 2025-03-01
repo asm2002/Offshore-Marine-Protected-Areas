@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c064acff81fac5408d0e9413a8d4c38, type: 3}
+  m_Name: coffee
+  m_EditorClassIdentifier: 
+  audio: {fileID: 8300000, guid: ebf6aebfda3b1704191cfcf0bd942099, type: 3}
+  subtitles:
+  - That's an awfully hot coffee pot
+  - Should I drop it on Donald Trump? Probably not
+  - But that's all I got 'til I come up with a solid plot
+  durations:
+  - 2.24
+  - 5.3
+  - 8
