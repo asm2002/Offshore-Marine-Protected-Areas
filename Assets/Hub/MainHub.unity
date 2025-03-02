@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5456733348963664102, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -313,10 +317,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1009314298}
   - component: {fileID: 1009314301}
+  - component: {fileID: 1009314302}
   - component: {fileID: 1009314300}
   - component: {fileID: 1009314299}
   m_Layer: 3
-  m_Name: Pin (3)
+  m_Name: Pin (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +383,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6465b2e6a50d6d646a2b29af0984889b, type: 2}
+  - {fileID: 2100000, guid: c433f97a06c61a54ab0cd642bdaf204e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -408,6 +413,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009314297}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1009314302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009314297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151bdcfcc1d6aec47a98bd636b72a55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneIndex: 0
+  activityName: 
 --- !u!1 &1107552914
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,9 +666,9 @@ Transform:
   m_LocalScale: {x: 0.4097187, y: 0.4097187, z: 0.4097188}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1995209776}
-  - {fileID: 1107552915}
   - {fileID: 1009314298}
+  - {fileID: 1107552915}
+  - {fileID: 1995209776}
   - {fileID: 997758544}
   - {fileID: 1670590395}
   m_Father: {fileID: 3598664004856388759}
@@ -785,7 +804,7 @@ GameObject:
   - component: {fileID: 1995209778}
   - component: {fileID: 1995209777}
   m_Layer: 3
-  m_Name: Pin (1)
+  m_Name: Pin (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
