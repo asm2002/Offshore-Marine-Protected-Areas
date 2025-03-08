@@ -125,7 +125,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _AlphaToMask: 0
     - _BUILTIN_AlphaClip: 0
     - _BUILTIN_Blend: 0
     - _BUILTIN_CullMode: 2
@@ -138,7 +137,6 @@ Material:
     - _BUILTIN_ZWrite: 1
     - _BUILTIN_ZWriteControl: 0
     - _Blend: 0
-    - _BlendModePreserveSpecular: 0
     - _BumpScale: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0
