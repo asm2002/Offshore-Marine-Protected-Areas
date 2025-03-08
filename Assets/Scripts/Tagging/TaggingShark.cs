@@ -10,8 +10,7 @@ public class TaggingShark : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        TagPlaced?.Invoke();
-        Debug.Log("tag placed invoked");
+        if (collider.tag == "Tag") TagPlaced?.Invoke();
     }
 
 }
