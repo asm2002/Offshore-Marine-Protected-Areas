@@ -252,6 +252,7 @@ MonoBehaviour:
   narrations:
   - {fileID: 11400000, guid: 26f370b44a1ddb54e9a624f40e8c13a8, type: 2}
   - {fileID: 11400000, guid: 9aebbbd27f08ff4469761ee2197f1da6, type: 2}
+  delay: 0.7
 --- !u!4 &524667438
 Transform:
   m_ObjectHideFlags: 0
