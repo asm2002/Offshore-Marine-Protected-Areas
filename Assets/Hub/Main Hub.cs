@@ -31,7 +31,7 @@ public class MainHub : MonoBehaviour
 
     IEnumerator loadScene(int index)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(loadSceneWaitTime);
         SceneManager.LoadScene(index);
     }
 
