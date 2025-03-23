@@ -25,8 +25,6 @@ public class Pin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("mmmmm");
-
         state = ON_MAP;
         minigameText.text = activityName;
         canvas.SetActive(false);
@@ -37,11 +35,14 @@ public class Pin : MonoBehaviour
     private void OnEnable()
     {
         xrGrabbin.selectEntered.AddListener(grabbed);
+        xrGrabbin.selectExited.AddListener(released);
+        
     }
 
     private void OnDisable()
     {
         xrGrabbin.selectEntered.RemoveListener(grabbed);
+        xrGrabbin.selectExited.RemoveListener(released);
     }
 
     // Update is called once per frame
@@ -51,7 +52,8 @@ public class Pin : MonoBehaviour
             focusOnTime -= Time.deltaTime;
         if (focusOnTime <= 0 && !canvas.activeSelf)
             canvas.SetActive(false);
-            
+
+        Debug.Log("Gravity Enabled: " + body.useGravity);
 
 
     }
@@ -66,12 +68,19 @@ public class Pin : MonoBehaviour
     {
         canvas.SetActive(false);
     }
+
     public void grabbed(SelectEnterEventArgs args)
     {
         canvas.SetActive(false);
         body.useGravity = true;
 
         mainHub.changeScene(sceneIndex);
+    }
+
+    void released(SelectExitEventArgs args)
+    {
+        body.useGravity = true; // turn on gravity when the object is let go of
+
     }
 
 }
