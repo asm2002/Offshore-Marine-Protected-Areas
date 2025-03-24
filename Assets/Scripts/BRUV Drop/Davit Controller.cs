@@ -7,6 +7,7 @@ public class DavitController : MonoBehaviour
     public GameObject snapZone;
     public float rotationSpeed = 30f; // Degrees per second
     public float dropDelay = 0.5f;
+    public GameObject tvScreen;
 
     private bool isRotating = false;
 
@@ -47,5 +48,8 @@ public class DavitController : MonoBehaviour
         davit.transform.rotation = startRotation; // Ensure exact reset rotation
 
         isRotating = false;
+
+        yield return new WaitForSeconds(dropDelay);
+        tvScreen.SetActive(true);
     }
 }
