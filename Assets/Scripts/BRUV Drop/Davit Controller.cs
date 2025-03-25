@@ -9,7 +9,6 @@ public class DavitController : MonoBehaviour
     public float dropDelay = 0.5f;
     public GameObject tvScreen;
 
-    private bool isRotating = false;
 
     void StartRotation()
     {
@@ -20,7 +19,6 @@ public class DavitController : MonoBehaviour
     {
         yield return new WaitForSeconds(dropDelay); // Wait for 1 second before deactivating snapZone
 
-        isRotating = true;
         Quaternion startRotation = davit.transform.rotation;
         Quaternion targetRotation = startRotation * Quaternion.Euler(0, 90, 0);
         float elapsedTime = 0f;
@@ -47,7 +45,6 @@ public class DavitController : MonoBehaviour
         }
         davit.transform.rotation = startRotation; // Ensure exact reset rotation
 
-        isRotating = false;
 
         yield return new WaitForSeconds(dropDelay);
         tvScreen.SetActive(true);
