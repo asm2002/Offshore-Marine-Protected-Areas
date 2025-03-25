@@ -4,7 +4,7 @@ public class BoatSway : MonoBehaviour
 {
     [SerializeField]
 
-    private bool sway;
+    public bool sway;
 
     public float swayAmplitude = 1f;
     public float swayFrequency = 0.1f;
@@ -15,7 +15,6 @@ public class BoatSway : MonoBehaviour
     void Start()
     {
         initialRotation = transform.eulerAngles;
-        sway = true;
     }
 
     // Update is called once per frame
