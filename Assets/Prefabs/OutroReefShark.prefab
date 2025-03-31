@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -30.293
       objectReference: {fileID: 0}
+    - target: {fileID: 759881672219566020, guid: 0d7b89a3c86c2d44ebc5cd85f6d32080, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 765daeb4b7a132048a7420d23259a9bb, type: 2}
     - target: {fileID: 919132149155446097, guid: 0d7b89a3c86c2d44ebc5cd85f6d32080, type: 3}
       propertyPath: m_Name
       value: OutroReefShark
