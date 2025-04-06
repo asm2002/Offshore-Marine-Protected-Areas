@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c16b81c467010240a3e511b4fc9ccf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaName: Area 3
+  areaName: Area 4
   areaLabel: {fileID: 339540159}
   canvas: {fileID: 609160715}
   pinManager: {fileID: 2092489506}
@@ -2704,7 +2704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c16b81c467010240a3e511b4fc9ccf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaName: Area 5
+  areaName: Area 1
   areaLabel: {fileID: 1931052872}
   canvas: {fileID: 1958323881}
   pinManager: {fileID: 2092489506}
@@ -4947,7 +4947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c16b81c467010240a3e511b4fc9ccf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaName: Area 4
+  areaName: Area 5
   areaLabel: {fileID: 27260451}
   canvas: {fileID: 135816616}
   pinManager: {fileID: 2092489506}
@@ -5376,7 +5376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c16b81c467010240a3e511b4fc9ccf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaName: Area 1
+  areaName: Area 2
   areaLabel: {fileID: 2047693649}
   canvas: {fileID: 553673754}
   pinManager: {fileID: 2092489506}
@@ -6014,7 +6014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c16b81c467010240a3e511b4fc9ccf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaName: Area 2
+  areaName: Area 3
   areaLabel: {fileID: 1552645679}
   canvas: {fileID: 1738912362}
   pinManager: {fileID: 2092489506}
@@ -6107,7 +6107,7 @@ MonoBehaviour:
   - {fileID: 1226931420}
   - {fileID: 2141471431}
   - {fileID: 1065408301}
-  taggedSharks: 10
+  taggedSharks: 3
 --- !u!1 &1873875824
 GameObject:
   m_ObjectHideFlags: 0
