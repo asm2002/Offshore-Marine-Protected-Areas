@@ -10,14 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c064acff81fac5408d0e9413a8d4c38, type: 3}
-  m_Name: coffee
+  m_Name: pop out
   m_EditorClassIdentifier: 
-  audio: {fileID: 8300000, guid: ebf6aebfda3b1704191cfcf0bd942099, type: 3}
-  subtitles:
-  - That's an awfully hot coffee pot
-  - Should I drop it on Donald Trump? Probably not
-  - But that's all I got 'til I come up with a solid plot
-  durations:
-  - 2.24
-  - 5.3
-  - 8
+  audio: {fileID: 8300000, guid: 26822c654e818c8489acd19776c94e11, type: 3}
+  subtitle: Pop out at one in the morning
+  duration: 2.5
