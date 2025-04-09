@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Anchor
+  - Interactable
+  - PlayerHand
+  - Water
+  - Shark
+  - Manta
+  - Tuna
   layers:
   - Default
   - TransparentFX
