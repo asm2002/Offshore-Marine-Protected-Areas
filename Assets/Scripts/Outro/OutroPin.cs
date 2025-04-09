@@ -9,6 +9,7 @@ public class OutroPin : MonoBehaviour
     [SerializeField] private GameObject canvas;
     private Material material;
     [SerializeField] private GameObject pinManager;
+    public TransitionEffect transitionEffect;
 
     // Start is called before the first frame update
     void Start() {
@@ -22,6 +23,7 @@ public class OutroPin : MonoBehaviour
         material.SetColor("_BaseColor", Color.green);
         pinManager.GetComponent<OutroPinManager>().DisableAllPins();
         Debug.Log("Selected");
+        //transitionEffect.FadeToBlackAndLoadScene(index);
     }
 
 }

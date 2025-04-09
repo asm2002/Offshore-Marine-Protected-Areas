@@ -14,6 +14,8 @@ public class Pin : MonoBehaviour
 
     [SerializeField] private XRGrabInteractable xrGrabbin;
 
+    public TransitionEffect transitionEffect;
+
     private Rigidbody body;
 
     const int ON_MAP = 0, HOVERING = 1, GRABBED = 2, PICKED = 3; // states of the pin
@@ -71,8 +73,9 @@ public class Pin : MonoBehaviour
     {
         canvas.SetActive(false);
         body.useGravity = true;
+        transitionEffect.FadeToBlackAndLoadScene(sceneIndex);
 
-        mainHub.changeScene(sceneIndex);
+        //mainHub.changeScene(sceneIndex);
     }
 
     void released(SelectExitEventArgs args)
