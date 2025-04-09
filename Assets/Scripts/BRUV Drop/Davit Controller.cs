@@ -8,6 +8,7 @@ public class DavitController : MonoBehaviour
     public float rotationSpeed = 30f; // Degrees per second
     public float dropDelay = 0.5f;
     public GameObject tvScreen;
+    public GameObject bruv;
 
 
     void StartRotation()
@@ -48,5 +49,7 @@ public class DavitController : MonoBehaviour
 
         yield return new WaitForSeconds(dropDelay);
         tvScreen.SetActive(true);
+        bruv.SetActive(false);
+
     }
 }
