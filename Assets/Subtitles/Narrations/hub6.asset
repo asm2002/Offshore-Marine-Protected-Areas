@@ -10,16 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c064acff81fac5408d0e9413a8d4c38, type: 3}
-  m_Name: conflicting
+  m_Name: hub6
   m_EditorClassIdentifier: 
-  audio: {fileID: 8300000, guid: 8055a9618ac08654f9368310788526b6, type: 3}
-  subtitles:
-  - I remember you was conflicted
-  - Misusing your influence
-  - Sometimes I did the same
-  - Abusing my power, full of resentment
-  durations:
-  - 2.3
-  - 4.8
-  - 7
-  - 9.5
+  audio: {fileID: 8300000, guid: cd524c3362d362d478a948ec8cd3b169, type: 3}
+  subtitle: You can see what's in store for you by hovering over them.
+  duration: 2.5
