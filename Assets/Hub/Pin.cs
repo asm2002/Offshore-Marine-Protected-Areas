@@ -53,8 +53,6 @@ public class Pin : MonoBehaviour
         if (focusOnTime <= 0 && !canvas.activeSelf)
             canvas.SetActive(false);
 
-        Debug.Log("Gravity Enabled: " + body.useGravity);
-
 
     }
 
