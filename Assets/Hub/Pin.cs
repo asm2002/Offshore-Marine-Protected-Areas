@@ -20,6 +20,8 @@ public class Pin : MonoBehaviour
 
     const int ON_MAP = 0, HOVERING = 1, GRABBED = 2, PICKED = 3; // states of the pin
 
+    public bool canChangeScene = false;
+
     private int state;
 
     float focusOnTime = -1;
@@ -50,30 +52,39 @@ public class Pin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canvas.activeSelf && focusOnTime > 0)
-            focusOnTime -= Time.deltaTime;
-        if (focusOnTime <= 0 && !canvas.activeSelf)
-            canvas.SetActive(false);
-
-
+        if (canChangeScene)
+        {
+            if (canvas.activeSelf && focusOnTime > 0)
+                focusOnTime -= Time.deltaTime;
+            if (focusOnTime <= 0 && !canvas.activeSelf)
+                canvas.SetActive(false);
+        }
     }
 
     public void hoveringOver()
     {
-        focusOnTime = 5;
-        canvas.SetActive(true);
+        if (canChangeScene)
+        {
+            focusOnTime = 5;
+            canvas.SetActive(true);
+        }
     }
 
     public void hoveringEnded()
     {
-        canvas.SetActive(false);
+        if (canChangeScene)
+        {
+            canvas.SetActive(false);
+        }
     }
 
     public void grabbed(SelectEnterEventArgs args)
     {
         canvas.SetActive(false);
         body.useGravity = true;
-        transitionEffect.FadeToBlackAndLoadScene(sceneIndex);
+
+        if (canChangeScene)
+            transitionEffect.FadeToBlackAndLoadScene(sceneIndex);
 
         //mainHub.changeScene(sceneIndex);
     }

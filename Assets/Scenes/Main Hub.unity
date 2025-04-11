@@ -4796,13 +4796,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3686059840148246473, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: canChangeScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686059840148246473, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
       propertyPath: transitionEffect
       value: 
       objectReference: {fileID: 1152368437}
     - target: {fileID: 4377474547645938195, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: canChangeScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377474547645938195, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
       propertyPath: transitionEffect
       value: 
       objectReference: {fileID: 1152368437}
+    - target: {fileID: 6777000595166636335, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: canChangeScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6777000595166636335, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
       propertyPath: transitionEffect
       value: 
