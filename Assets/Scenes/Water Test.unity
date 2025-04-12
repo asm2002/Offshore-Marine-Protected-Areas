@@ -5942,6 +5942,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3079657195504430252, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: m_text
+      value: BRUV
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686059840148246473, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: sceneIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3686059840148246473, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
       propertyPath: transitionEffect
       value: 
@@ -5950,10 +5958,18 @@ PrefabInstance:
       propertyPath: transitionEffect
       value: 
       objectReference: {fileID: 2118408248}
+    - target: {fileID: 5644680376898791177, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6777000595166636335, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
       propertyPath: transitionEffect
       value: 
       objectReference: {fileID: 2118408248}
+    - target: {fileID: 7818111588325435694, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6969313630912828010, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}

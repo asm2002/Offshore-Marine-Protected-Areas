@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Subtitles : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class Subtitles : MonoBehaviour
     float openSceneTimer = 3f;
     bool openingRN = true;
 
+    public bool isOutroScene = false;
+
+    public TransitionEffect transitionEffect;
 
     private void Awake()
     {
@@ -37,6 +41,11 @@ public class Subtitles : MonoBehaviour
         subtitleText.text = "";
 
         playing = null;
+
+        if (SceneManager.GetActiveScene().name == "OutroHub")
+        {
+            isOutroScene=true;
+        }
     }
 
     private void Update()
@@ -57,6 +66,10 @@ public class Subtitles : MonoBehaviour
         {
             if (narrationsQueue.Count > 0)
                 playNextNarration();
+            else if (isOutroScene)
+            {
+                transitionEffect.FadeToBlackAndLoadScene(0);
+            }
         }
         else if (mode == PLAYING)
         {
@@ -84,6 +97,8 @@ public class Subtitles : MonoBehaviour
                 waitTime += Time.deltaTime;
             }
         }
+
+
     }
 
 
