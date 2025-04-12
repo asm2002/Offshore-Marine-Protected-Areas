@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2542708929012935180}
   - component: {fileID: 4122467081252097659}
   - component: {fileID: 1711753631209538021}
+  - component: {fileID: 8748566889207174858}
   m_Layer: 0
   m_Name: Map Picture Frame
   m_TagString: Untagged
@@ -142,6 +143,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2530988280945247426, guid: 023de7066c8cb4f4b8fac239aa224628, type: 3}
+--- !u!114 &8748566889207174858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432903594902765167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e56cf37e97e35784b82739877edbc32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pins:
+  - {fileID: 7818111588325435694}
+  - {fileID: 7634514308963825564}
+  - {fileID: 5644680376898791177}
 --- !u!1 &2483396452809671033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1758,8 @@ MonoBehaviour:
   canvas: {fileID: 9191896635010619610}
   mainHub: {fileID: 0}
   xrGrabbin: {fileID: 8449149959875484203}
+  transitionEffect: {fileID: 0}
+  canChangeScene: 0
 --- !u!114 &8449149959875484203 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3218834375328317215, guid: 88e4644a88124364799627b9826508c2, type: 3}
@@ -1991,6 +2010,8 @@ MonoBehaviour:
   canvas: {fileID: 2483396452809671033}
   mainHub: {fileID: 0}
   xrGrabbin: {fileID: 8128386405661279385}
+  transitionEffect: {fileID: 0}
+  canChangeScene: 0
 --- !u!114 &8128386405661279385 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3218834375328317215, guid: 88e4644a88124364799627b9826508c2, type: 3}
@@ -2241,6 +2262,8 @@ MonoBehaviour:
   canvas: {fileID: 3849928091455063181}
   mainHub: {fileID: 0}
   xrGrabbin: {fileID: 5973947573371996862}
+  transitionEffect: {fileID: 0}
+  canChangeScene: 0
 --- !u!114 &5973947573371996862 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3218834375328317215, guid: 88e4644a88124364799627b9826508c2, type: 3}

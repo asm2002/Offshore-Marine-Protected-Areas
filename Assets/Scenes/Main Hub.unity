@@ -4804,6 +4804,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1152368437}
     - target: {fileID: 4377474547645938195, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: sceneIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377474547645938195, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
       propertyPath: canChangeScene
       value: 1
       objectReference: {fileID: 0}
@@ -4811,6 +4815,10 @@ PrefabInstance:
       propertyPath: transitionEffect
       value: 
       objectReference: {fileID: 1152368437}
+    - target: {fileID: 5644680376898791177, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6777000595166636335, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
       propertyPath: canChangeScene
       value: 1
@@ -4819,6 +4827,10 @@ PrefabInstance:
       propertyPath: transitionEffect
       value: 
       objectReference: {fileID: 1152368437}
+    - target: {fileID: 7634514308963825564, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6969313630912828010, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}

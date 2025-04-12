@@ -20,8 +20,11 @@ public class Subtitles : MonoBehaviour
     public float delay = 0.5f;
 
     // MODES
-    private const int NOTHING_PLAYING = 0, PLAYING = 1, WAITING = 2;
-    private int mode = NOTHING_PLAYING;
+    private const int NOTHING_PLAYING = 0, PLAYING = 1, WAITING = 2, LOADING = -1;
+    private int mode = LOADING;
+
+    float openSceneTimer = 3f;
+    bool openingRN = true;
 
 
     private void Awake()
@@ -39,24 +42,18 @@ public class Subtitles : MonoBehaviour
     private void Update()
     {
 
-        //if (timePassed >= 0f)
-        //{
-
-        //    timePassed += Time.deltaTime;
-
-        //    if (timePassed >= playing.duration)
-        //    {
-        //        playNextNarration();
-        //    }
-        //}
-
-        //if (playing == null && narrationsQueue.Count > 0)
-        //{
-        //    playNextNarration();
-        //}
-
-
-        if (mode == NOTHING_PLAYING)
+        if (mode == LOADING)
+        {
+            if (openSceneTimer > 0)
+            {
+                openSceneTimer -= Time.deltaTime;
+            }
+            else
+            {
+                mode = NOTHING_PLAYING;
+            }
+        }
+        else if (mode == NOTHING_PLAYING)
         {
             if (narrationsQueue.Count > 0)
                 playNextNarration();
@@ -86,12 +83,9 @@ public class Subtitles : MonoBehaviour
             {
                 waitTime += Time.deltaTime;
             }
-
-            // if wait time >= 1 second: reset wait time set mode to nothing
-            // else increase wait time
         }
-
     }
+
 
     public void enqueueNarration(Narration n)
     {
@@ -100,23 +94,16 @@ public class Subtitles : MonoBehaviour
 
     private void playNextNarration()
     {
-        //timePassed = -1;
-        //playing = null;
-        //subtitleText.text = "";
-
         mode = PLAYING;
 
         if (narrationsQueue.Count <= 0)
         {
-            Debug.Log("HOW DID WE GET HERE");
             return;
         }
 
-        Debug.Log("loading the next narration");
-
         playing = narrationsQueue.Dequeue() as Narration;
 
-        Debug.Log(playing.name + " for " + playing.duration);
+        Debug.Log("Narration: " + playing.name + " for " + playing.duration + " seconds");
 
         audioSource.clip = playing.audio;
         audioSource.Play();
@@ -124,7 +111,5 @@ public class Subtitles : MonoBehaviour
         timePassed = 0;
         subtitleText.text = playing.subtitle;
     }
-
-
 
 }
