@@ -14,6 +14,9 @@ public class DavitController : MonoBehaviour
     public GameObject tvScreen;
     public GameObject bruv;
     public XRGrabInteractable grab;
+    public bool hasLaunched;
+    public Subtitles subtitleManager;
+    public Narration[] narrations;
 
     private void Start()
     {
@@ -30,6 +33,12 @@ public class DavitController : MonoBehaviour
 
     IEnumerator RotateDavit()
     {
+        hasLaunched = true;
+        foreach (Narration n in narrations)
+        {
+            subtitleManager.enqueueNarration(n);
+        }
+
         grab.interactionLayers = InteractionLayerMask.GetMask("BRUV");
         yield return new WaitForSeconds(dropDelay); // Wait for 1 second before deactivating snapZone
 

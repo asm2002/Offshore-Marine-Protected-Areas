@@ -8,6 +8,7 @@ public class BruvRespawner : MonoBehaviour
     public GameObject bruv;
     public int respawnThreshold = 0;
     // Start is called before the first frame update
+    public DavitController davitController;
     
     void Start()
     {
@@ -20,9 +21,8 @@ public class BruvRespawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (bruv.transform.position.y <= respawnThreshold)
+        if (bruv.transform.position.y <= respawnThreshold && !davitController.hasLaunched)
         {
-            Debug.Log("derp");
 
             bruv.transform.position = respawnPoint.position;
 
