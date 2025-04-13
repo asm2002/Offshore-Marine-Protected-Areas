@@ -4,6 +4,21 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 55daccc09a3b69647bbab145b54a3ab3
+  - enabled: 1
+    path: Assets/Scenes/Main Hub.unity
+    guid: 85b702df0e0f7804abbc20b7a8aecd8e
+  - enabled: 1
+    path: Assets/Scenes/Water Test.unity
+    guid: cbdbbd14ec2967c4dbdc70fea47b24b4
+  - enabled: 1
+    path: Assets/Scenes/OutroHub.unity
+    guid: 9020c1c7910191343b5a6ff14b508a7a
+  - enabled: 1
+    path: Assets/Scenes/Bruv Launch.unity
+    guid: a7d5b6cfa7f644148baa0f44eb5e596b
   m_configObjects:
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: bf62290ebf48604459a00929117782b9, type: 2}
