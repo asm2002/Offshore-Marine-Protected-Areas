@@ -42,10 +42,10 @@ public class Subtitles : MonoBehaviour
 
         playing = null;
 
-        if (SceneManager.GetActiveScene().name == "OutroHub")
-        {
-            isOutroScene=true;
-        }
+        // if (SceneManager.GetActiveScene().name == "OutroHub")
+        // {
+        //     isOutroScene=true;
+        // }
     }
 
     private void Update()
