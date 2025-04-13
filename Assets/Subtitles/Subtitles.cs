@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Subtitles : MonoBehaviour
 {
@@ -20,9 +21,15 @@ public class Subtitles : MonoBehaviour
     public float delay = 0.5f;
 
     // MODES
-    private const int NOTHING_PLAYING = 0, PLAYING = 1, WAITING = 2;
-    private int mode = NOTHING_PLAYING;
+    private const int NOTHING_PLAYING = 0, PLAYING = 1, WAITING = 2, LOADING = -1;
+    private int mode = LOADING;
 
+    float openSceneTimer = 2f;
+    bool openingRN = true;
+
+    public bool isOutroScene = false;
+
+    public TransitionEffect transitionEffect;
 
     private void Awake()
     {
@@ -34,32 +41,35 @@ public class Subtitles : MonoBehaviour
         subtitleText.text = "";
 
         playing = null;
+
+        if (SceneManager.GetActiveScene().name == "OutroHub")
+        {
+            isOutroScene=true;
+        }
     }
 
     private void Update()
     {
 
-        //if (timePassed >= 0f)
-        //{
-
-        //    timePassed += Time.deltaTime;
-
-        //    if (timePassed >= playing.duration)
-        //    {
-        //        playNextNarration();
-        //    }
-        //}
-
-        //if (playing == null && narrationsQueue.Count > 0)
-        //{
-        //    playNextNarration();
-        //}
-
-
-        if (mode == NOTHING_PLAYING)
+        if (mode == LOADING)
+        {
+            if (openSceneTimer > 0)
+            {
+                openSceneTimer -= Time.deltaTime;
+            }
+            else
+            {
+                mode = NOTHING_PLAYING;
+            }
+        }
+        else if (mode == NOTHING_PLAYING)
         {
             if (narrationsQueue.Count > 0)
                 playNextNarration();
+            else if (isOutroScene)
+            {
+                transitionEffect.FadeToBlackAndLoadScene(0);
+            }
         }
         else if (mode == PLAYING)
         {
@@ -86,12 +96,11 @@ public class Subtitles : MonoBehaviour
             {
                 waitTime += Time.deltaTime;
             }
-
-            // if wait time >= 1 second: reset wait time set mode to nothing
-            // else increase wait time
         }
 
+
     }
+
 
     public void enqueueNarration(Narration n)
     {
@@ -100,31 +109,38 @@ public class Subtitles : MonoBehaviour
 
     private void playNextNarration()
     {
-        //timePassed = -1;
-        //playing = null;
-        //subtitleText.text = "";
-
         mode = PLAYING;
 
         if (narrationsQueue.Count <= 0)
         {
-            Debug.Log("HOW DID WE GET HERE");
             return;
         }
 
-        Debug.Log("loading the next narration");
-
         playing = narrationsQueue.Dequeue() as Narration;
 
-        Debug.Log(playing.name + " for " + playing.duration);
+        Debug.Log("Narration: " + playing.name + " for " + playing.duration + " seconds");
 
         audioSource.clip = playing.audio;
         audioSource.Play();
 
         timePassed = 0;
-        subtitleText.text = playing.subtitle;
+        if (isSubtitlesOn()) subtitleText.text = playing.subtitle;
     }
 
+    private bool isSubtitlesOn()
+    {
 
+        if (PlayerPrefs.HasKey("subtitles"))
+        {
+            int x = PlayerPrefs.GetInt("subtitles");
+            if (x == 0) return false;
+            if (x == 1) return true;
+        }
+         
+        // default is subtitles are on
+        PlayerPrefs.SetInt("subtitles", 1);
+        return true;
+
+    }
 
 }

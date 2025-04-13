@@ -8,10 +8,9 @@ public class SharkSpawner : MonoBehaviour {
     
     [SerializeField] private GameObject mapShark;
     [SerializeField] private GameObject[] spawnAreas;
-    public int taggedSharks;
 
     void Start() {
-        for (int i = 0; i < taggedSharks; i++) {
+        for (int i = 0; i < StaticData.sharksTagged; i++) {
 
             // select random spawn area
             int randomSpawnArea = Random.Range(0, spawnAreas.Length);

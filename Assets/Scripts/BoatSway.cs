@@ -14,6 +14,8 @@ public class BoatSway : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sway = isMotionSicknessOn();
+
         initialRotation = transform.eulerAngles;
     }
 
@@ -30,6 +32,22 @@ public class BoatSway : MonoBehaviour
 
     public void toggleSway() { 
         sway = !sway; 
+    }
+
+    private bool isMotionSicknessOn()
+    {
+
+        if (PlayerPrefs.HasKey("motionSick"))
+        {
+            int x = PlayerPrefs.GetInt("motionSick");
+            if (x == 0) return false;
+            if (x == 1) return true;
+        }
+
+        // default is subtitles are on
+        PlayerPrefs.SetInt("motionSick", 1);
+        return true;
+
     }
 
 }

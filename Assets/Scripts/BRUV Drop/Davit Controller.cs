@@ -1,5 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
+
 
 public class DavitController : MonoBehaviour
 {
@@ -9,7 +13,15 @@ public class DavitController : MonoBehaviour
     public float dropDelay = 0.5f;
     public GameObject tvScreen;
     public GameObject bruv;
+    public XRGrabInteractable grab;
 
+    private void Start()
+    {
+        if(grab == null)
+        {
+            grab = bruv.GetComponent<XRGrabInteractable>();
+        }
+    }
 
     void StartRotation()
     {
@@ -18,6 +30,7 @@ public class DavitController : MonoBehaviour
 
     IEnumerator RotateDavit()
     {
+        grab.interactionLayers = InteractionLayerMask.GetMask("BRUV");
         yield return new WaitForSeconds(dropDelay); // Wait for 1 second before deactivating snapZone
 
         Quaternion startRotation = davit.transform.rotation;

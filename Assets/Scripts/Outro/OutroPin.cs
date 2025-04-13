@@ -9,6 +9,10 @@ public class OutroPin : MonoBehaviour
     [SerializeField] private GameObject canvas;
     private Material material;
     [SerializeField] private GameObject pinManager;
+    [SerializeField] private Subtitles subtitleManager;
+    [SerializeField] private Narration[] afterSelectNarration;
+    // public TransitionEffect transitionEffect;
+    
 
     // Start is called before the first frame update
     void Start() {
@@ -22,6 +26,13 @@ public class OutroPin : MonoBehaviour
         material.SetColor("_BaseColor", Color.green);
         pinManager.GetComponent<OutroPinManager>().DisableAllPins();
         Debug.Log("Selected");
+        
+        foreach (Narration narr in afterSelectNarration) {
+            subtitleManager.enqueueNarration(narr);
+        }
+
+        subtitleManager.isOutroScene = true;
+        //transitionEffect.FadeToBlackAndLoadScene(index);
     }
 
 }
