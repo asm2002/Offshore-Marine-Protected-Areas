@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Subtitles : MonoBehaviour
 {
@@ -11,17 +13,13 @@ public class Subtitles : MonoBehaviour
     private Queue<Narration> narrationsQueue = new Queue<Narration>();
 
     Narration playing;
-    int i = -1; // index of the subtitle/duration we are on
     string text = "";
-    float timePassed = -1f, timeOut = -1;
+    float timePassed = -1f, waitTime = -1;
 
     AudioSource audioSource;
 
     public float delay = 0.5f;
 
-<<<<<<< Updated upstream
-    private void OnEnable()
-=======
     // MODES
     private const int NOTHING_PLAYING = 0, PLAYING = 1, WAITING = 2, LOADING = -1;
     private int mode = LOADING;
@@ -34,7 +32,6 @@ public class Subtitles : MonoBehaviour
     public TransitionEffect transitionEffect;
 
     private void Awake()
->>>>>>> Stashed changes
     {
         audioSource = GetComponent<AudioSource>();
 
@@ -43,84 +40,90 @@ public class Subtitles : MonoBehaviour
 
         subtitleText.text = "";
 
-        playNextNarration();
+        playing = null;
+
+        if (SceneManager.GetActiveScene().name == "OutroHub")
+        {
+            isOutroScene=true;
+        }
     }
 
-    /**
-     * Structure:
-     *      While the queue is not empty:
-     *          dequeue narration and set it to playing
-     *              within this narration: a current subtitle will be playing
-     *              once the timers >= duration of said subtitle, it goes to the next one
-     *              once all subtitles have been displayed and thus the narration is over, we can restart this loop 
-     */
     private void Update()
     {
 
-        //if (timePassed >= 0f)
-        //{
-        //    timePassed -= Time.deltaTime;
-        //    if (timePassed < 0f)
-        //        timePassed = 0f;
-
-        //    if (timePassed == 0f) // change subtitles
-        //    {
-        //        if (playing.subtitles.Count > 0)
-        //        {
-        //            i++;
-        //            subtitleText.text = playing.subtitles[i];
-        //            timePassed = playing.durations[i];
-        //        }
-        //        else
-        //            playNextNarration();
-        //    }
-        //}
-
-        if (timePassed >= 0f)
+        if (mode == LOADING)
         {
-            timePassed += Time.deltaTime;
-
-            if (timePassed >= playing.durations[i] - delay)
+            if (openSceneTimer > 0)
             {
-                if (i < playing.durations.Count - 1)
-                {
-                    i++;
-                    subtitleText.text = playing.subtitles[i];
-                }
-                else
-                {
-                    playNextNarration();
-                }
+                openSceneTimer -= Time.deltaTime;
+            }
+            else
+            {
+                mode = NOTHING_PLAYING;
+            }
+        }
+        else if (mode == NOTHING_PLAYING)
+        {
+            if (narrationsQueue.Count > 0)
+                playNextNarration();
+            else if (isOutroScene)
+            {
+                transitionEffect.FadeToBlackAndLoadScene(0);
+            }
+        }
+        else if (mode == PLAYING)
+        {
+            // the amount of time passed for this narration has reach it's duration length
+            if (timePassed >= playing.duration)
+            {
+                subtitleText.text = "";
+                
+                mode = WAITING;
+            }
+            else // the clip isn't finished
+            {
+                timePassed += Time.deltaTime;
+            }
+        }
+        else if (mode == WAITING)
+        {
+            if (waitTime >= 0.5f)
+            {
+                mode = NOTHING_PLAYING;
+                waitTime = 0;
+            }
+            else
+            {
+                waitTime += Time.deltaTime;
             }
         }
 
+
     }
 
-    public void queueNarration(Narration n)
+
+    public void enqueueNarration(Narration n)
     {
         narrationsQueue.Enqueue(n);
     }
 
     private void playNextNarration()
     {
+        mode = PLAYING;
+
         if (narrationsQueue.Count <= 0)
         {
-            i = -1;
-            timePassed = -1;
-            subtitleText.text = "";
             return;
         }
 
         playing = narrationsQueue.Dequeue() as Narration;
 
+        Debug.Log("Narration: " + playing.name + " for " + playing.duration + " seconds");
+
         audioSource.clip = playing.audio;
         audioSource.Play();
 
-        i = 0;
         timePassed = 0;
-<<<<<<< Updated upstream
-        subtitleText.text = playing.subtitles[i];
-=======
         if (isSubtitlesOn()) subtitleText.text = playing.subtitle;
     }
 
@@ -137,24 +140,7 @@ public class Subtitles : MonoBehaviour
         // default is subtitles are on
         PlayerPrefs.SetInt("subtitles", 1);
         return true;
->>>>>>> Stashed changes
 
     }
-
-    public void setSubtitle(string text, float duration)
-    {
-
-    }
-
-    public void setSubtitleSize()
-    {
-
-    }
-
-    public void setSubtitleColor()
-    {
-
-    }
-
 
 }
