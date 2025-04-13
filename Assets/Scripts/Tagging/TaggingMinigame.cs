@@ -13,6 +13,7 @@ public class TaggingMinigame : MonoBehaviour
     private enum GameState
     {
         tutorial,
+        timer,
         game,
         end
     }
@@ -28,19 +29,30 @@ public class TaggingMinigame : MonoBehaviour
     [SerializeField] private TMP_Text countDownText;
     [SerializeField] private string startText = "Tag the sharks!";
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private TMP_Text text;
+    [SerializeField] private TMP_Text sharkCounterText;
     [SerializeField] private float countdownTime = 3;
     [SerializeField] private float gameTime = 60;
+    [SerializeField] private GameObject davitModel;
+    [SerializeField] private GameObject davitPivotPoint;
+
+    [Header("Narration")]
+    [SerializeField] private Subtitles subtitles;
+    [SerializeField] private Narration place;
+    private bool placed = false;
+    [SerializeField] private Narration minigameIntro;
+    [SerializeField] private Narration outro1;
+    [SerializeField] private Narration outro2;
+    [SerializeField] private Narration outro3;
 
 
     private Transform m_tagPlacedArea;
     private GameObject m_shark;
     private TaggingShark m_sharkScript;
     private GameObject m_currentTag;
-    private float gameTimeElapsed;
+    private float gameTimer;
 
     private XRGrabInteractable m_tag;
-    private bool firstTag;
+    private Coroutine turning;
 
     private void OnEnable()
     {
@@ -49,7 +61,6 @@ public class TaggingMinigame : MonoBehaviour
 
     private void Start()
     {
-        firstTag = true;
         ResetTag();
     }
 
@@ -78,19 +89,16 @@ public class TaggingMinigame : MonoBehaviour
 
     private void PlaceTag()
     {
-        m_tag.selectEntered.RemoveListener(swapActiveLabel);
-        m_tag.selectExited.RemoveListener(swapActiveLabel);
-        m_currentTag.GetComponent<XRGrabInteractable>().enabled = false;
-        m_currentTag.GetComponent<Rigidbody>().isKinematic = true;
-        m_currentTag.transform.position = m_tagPlacedArea.position;
-
-        if (curState == GameState.tutorial)
+        if (turning == null)
         {
-            ResetTag();
+            m_tag.selectEntered.RemoveListener(swapActiveLabel);
+            m_tag.selectExited.RemoveListener(swapActiveLabel);
+            m_currentTag.GetComponent<XRGrabInteractable>().enabled = false;
+            m_currentTag.GetComponent<Rigidbody>().isKinematic = true;
+            m_currentTag.transform.position = m_tagPlacedArea.position;
+
+            turning = StartCoroutine(RotateShark());
         }
-        
-        DestroyShark();
-        CreateShark();
     }
 
     private void CreateShark()
@@ -118,6 +126,11 @@ public class TaggingMinigame : MonoBehaviour
             {
                 grabPrompt.gameObject.SetActive(false);
                 placePrompt.gameObject.SetActive(true);
+                if (placed == false)
+                {
+                    subtitles.enqueueNarration(place);
+                    placed = true;
+                }
             }
             else
             {
@@ -134,24 +147,125 @@ public class TaggingMinigame : MonoBehaviour
             grabPrompt.gameObject.SetActive(false);
             placePrompt.gameObject.SetActive(true);
         }
-        else
+        else if (placePrompt.gameObject.activeSelf)
         {
             grabPrompt.gameObject.SetActive(true);
             placePrompt.gameObject.SetActive(false);
         }
+        else
+        {
+            grabPrompt.gameObject.SetActive(false);
+            placePrompt.gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator RotateShark()
+    {
+        m_shark.transform.DOMoveY(21, 0.5f);
+        m_currentTag.transform.DOMoveY(21, 0.5f);
+        if (curState == GameState.tutorial)
+        {
+            subtitles.enqueueNarration(minigameIntro);
+            grabPrompt.gameObject.SetActive(false);
+            placePrompt.gameObject.SetActive(false);
+        }
+        Debug.Log("right");
+        while (davitModel.transform.eulerAngles.y != 90)
+        {
+            davitModel.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), Time.deltaTime * 20);
+            m_shark.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), Time.deltaTime * 20);
+            m_sharkSpawnPoint.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), Time.deltaTime * 20);
+            m_currentTag.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), Time.deltaTime * 20);
+            if (davitModel.transform.eulerAngles.y > 90)
+            {
+                davitModel.transform.eulerAngles = new Vector3(0, 90, 0);
+                m_shark.transform.eulerAngles = new Vector3(0, 90, 0);
+                m_sharkSpawnPoint.transform.eulerAngles = new Vector3(0, 90, 0);
+            }
+            yield return null;
+        }
+        m_shark.transform.DOMoveY(17, 1f);
+        m_currentTag.transform.DOMoveY(17, 1f);
+        yield return new WaitForSeconds(1);
+        DestroyShark();
+        Coroutine gameStarting;
+        if (curState == GameState.tutorial)
+        {
+            Debug.Log("start");
+            gameStarting = StartCoroutine(StartGame());
+            yield return gameStarting;
+        }
+        else if (curState == GameState.game)
+        {
+            Debug.Log("counter");
+            sharkCounterText.SetText((++StaticData.sharksTagged).ToString());
+            ResetTag();
+            CreateShark();
+        }
+        if (m_shark) m_shark.transform.DOMoveY(21, 0.5f);
+        Debug.Log("left");
+        while (davitModel.transform.eulerAngles.y != 0)
+        {
+            davitModel.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), -(Time.deltaTime * 20));
+            if (m_shark) m_shark.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), -(Time.deltaTime * 20));
+            m_sharkSpawnPoint.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), -Time.deltaTime * 20);
+            if (davitModel.transform.eulerAngles.y > 359)
+            {
+                davitModel.transform.eulerAngles = new Vector3(0, 0, 0);
+                if (m_shark) m_shark.transform.eulerAngles = new Vector3(0, 0, 0);
+                m_sharkSpawnPoint.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            yield return null;
+        }
+        if (m_shark) m_shark.transform.DOMoveY(19.956f, 0.5f);
+        turning = null;
+
     }
 
     private IEnumerator StartGame()
     {
+        curState = GameState.timer;
         countDownText.SetText(startText);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         countDownText.SetText("3");
         yield return new WaitForSeconds(1);
         countDownText.SetText("2");
         yield return new WaitForSeconds(1);
         countDownText.SetText("1");
         yield return new WaitForSeconds(1);
+        countDownText.SetText("");
+        curState = GameState.game;
+        ResetTag();
+        DestroyShark();
+        CreateShark();
+        StartCoroutine(GameTimer());
+    }
 
+    private IEnumerator GameTimer()
+    {
+        timerText.rectTransform.DOMoveX(200, 1);
+        StaticData.sharksTagged = 0;
+        sharkCounterText.rectTransform.DOMoveX(200, 1);
+        sharkCounterText.SetText("0");
+        gameTimer = 60;
+        while (gameTimer >= 0)
+        {
+            timerText.text = gameTimer.ToString("00");
+            gameTimer--;
+            yield return new WaitForSeconds(1);
+        }
+        timerText.rectTransform.DOMoveX(-200, 1);
+        m_currentTag.GetComponent<XRGrabInteractable>().enabled = false;
+        curState = GameState.end;
+        StartCoroutine(EndOfGame());
+    }
+
+    private IEnumerator EndOfGame()
+    {
+        subtitles.enqueueNarration(outro1);
+        subtitles.enqueueNarration(outro2);
+        subtitles.enqueueNarration(outro3);
+        return null;
     }
 
 }
