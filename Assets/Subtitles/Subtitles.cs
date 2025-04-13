@@ -19,7 +19,22 @@ public class Subtitles : MonoBehaviour
 
     public float delay = 0.5f;
 
+<<<<<<< Updated upstream
     private void OnEnable()
+=======
+    // MODES
+    private const int NOTHING_PLAYING = 0, PLAYING = 1, WAITING = 2, LOADING = -1;
+    private int mode = LOADING;
+
+    float openSceneTimer = 2f;
+    bool openingRN = true;
+
+    public bool isOutroScene = false;
+
+    public TransitionEffect transitionEffect;
+
+    private void Awake()
+>>>>>>> Stashed changes
     {
         audioSource = GetComponent<AudioSource>();
 
@@ -103,7 +118,26 @@ public class Subtitles : MonoBehaviour
 
         i = 0;
         timePassed = 0;
+<<<<<<< Updated upstream
         subtitleText.text = playing.subtitles[i];
+=======
+        if (isSubtitlesOn()) subtitleText.text = playing.subtitle;
+    }
+
+    private bool isSubtitlesOn()
+    {
+
+        if (PlayerPrefs.HasKey("subtitles"))
+        {
+            int x = PlayerPrefs.GetInt("subtitles");
+            if (x == 0) return false;
+            if (x == 1) return true;
+        }
+         
+        // default is subtitles are on
+        PlayerPrefs.SetInt("subtitles", 1);
+        return true;
+>>>>>>> Stashed changes
 
     }
 

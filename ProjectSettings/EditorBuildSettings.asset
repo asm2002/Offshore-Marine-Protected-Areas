@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
   - enabled: 1
+<<<<<<< Updated upstream
+=======
+    path: Assets/Scenes/StartScreen.unity
+    guid: 739f0dfde906e1b4c9b241859f614333
+  - enabled: 1
+    path: Assets/Scenes/Main Hub.unity
+    guid: 85b702df0e0f7804abbc20b7a8aecd8e
+  - enabled: 1
+>>>>>>> Stashed changes
     path: Assets/Scenes/Water Test.unity
     guid: cbdbbd14ec2967c4dbdc70fea47b24b4
   m_configObjects:
