@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BRUV5
   m_EditorClassIdentifier: 
   audio: {fileID: 8300000, guid: 3d4f7a48976e389409999ca245c1e056, type: 3}
-  subtitle: 'This davit helps us drop the BRUV into the water. '
+  subtitle: 'The davit helps us drop the BRUV into the water. '
   duration: 4
