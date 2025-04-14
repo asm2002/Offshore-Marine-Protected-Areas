@@ -5,20 +5,25 @@ TagManager:
   serializedVersion: 2
   tags:
   - Anchor
-  - Tag
+  - Interactable
+  - PlayerHand
+  - Water
+  - Shark
+  - Manta
+  - Tuna
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Pin
+  - 
   - Water
   - UI
-  - Fish
   - 
-  - Suimono_Water
-  - Suimono_Depth
-  - Suimono_Screen
-  - Reset Position Zone
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
