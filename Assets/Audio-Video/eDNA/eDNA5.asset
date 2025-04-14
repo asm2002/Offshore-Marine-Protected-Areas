@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c064acff81fac5408d0e9413a8d4c38, type: 3}
-  m_Name: BRUV5
+  m_Name: eDNA5
   m_EditorClassIdentifier: 
-  audio: {fileID: 8300000, guid: 3d4f7a48976e389409999ca245c1e056, type: 3}
-  subtitle: 'The davit helps us drop the BRUV into the water. '
-  duration: 4
+  audio: {fileID: 8300000, guid: d359c74ba34658a41b0ee7156104384a, type: 3}
+  subtitle: Wonderful job. You've helped complete our understanding of these animals's
+    DNA.
+  duration: 5

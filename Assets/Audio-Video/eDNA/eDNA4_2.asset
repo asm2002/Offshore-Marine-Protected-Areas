@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c064acff81fac5408d0e9413a8d4c38, type: 3}
-  m_Name: BRUV5
+  m_Name: eDNA4_2
   m_EditorClassIdentifier: 
-  audio: {fileID: 8300000, guid: 3d4f7a48976e389409999ca245c1e056, type: 3}
-  subtitle: 'The davit helps us drop the BRUV into the water. '
-  duration: 4
+  audio: {fileID: 8300000, guid: 48ced78de586c1f4a90112f74b20e9ed, type: 3}
+  subtitle: If you turn to the wall, you'll see the incomplete DNA sequences in our
+    database for three marine animals.
+  duration: 5

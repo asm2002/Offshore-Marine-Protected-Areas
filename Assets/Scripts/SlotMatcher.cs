@@ -3,14 +3,15 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class SlotMatcher : MonoBehaviour
 {
-    public string requiredTag; // "Fish", "Frog", etc.
-    public MinigameManager gameManager; // Link in Inspector
+    public string requiredTag; // "Fish"
+    public MinigameManager gameManager;
     public GameObject model;
     public GameObject incompleteDna;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(requiredTag))
         {
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
             other.transform.position = transform.position; // Snap
             other.transform.rotation = transform.rotation;
             other.GetComponent<Rigidbody>().isKinematic = true;

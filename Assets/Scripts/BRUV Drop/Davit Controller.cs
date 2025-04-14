@@ -17,6 +17,7 @@ public class DavitController : MonoBehaviour
     public bool hasLaunched;
     public Subtitles subtitleManager;
     public Narration[] narrations;
+    public AudioSource metalNoise;
 
     private void Start()
     {
@@ -46,7 +47,8 @@ public class DavitController : MonoBehaviour
         Quaternion targetRotation = startRotation * Quaternion.Euler(0, 90, 0);
         float elapsedTime = 0f;
         float duration = 90f / rotationSpeed; // Time to complete rotation
-
+        
+        metalNoise.Play();
         while (elapsedTime < duration)
         {
             davit.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / duration);
@@ -59,7 +61,11 @@ public class DavitController : MonoBehaviour
         snapZone.SetActive(false); // Disable snapZone
 
         yield return new WaitForSeconds(dropDelay); // Wait for 1 second before rotating back
+        bruv.SetActive(false);
+
         elapsedTime = 0f;
+
+        metalNoise.Play();
         while (elapsedTime < duration)
         {
             davit.transform.rotation = Quaternion.Slerp(targetRotation, startRotation, elapsedTime / duration);
@@ -71,7 +77,5 @@ public class DavitController : MonoBehaviour
 
         yield return new WaitForSeconds(dropDelay);
         tvScreen.SetActive(true);
-        bruv.SetActive(false);
-
     }
 }

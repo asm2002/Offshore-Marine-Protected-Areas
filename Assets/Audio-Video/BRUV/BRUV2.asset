@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 8300000, guid: 5ff5047a5cc06d64a8ccf2ee931745df, type: 3}
   subtitle: "To do that, we\u2019re going to use a Baited Remote Underwater Video,
-    or a BRUV. "
+    or a BRUV for short. "
   duration: 6
