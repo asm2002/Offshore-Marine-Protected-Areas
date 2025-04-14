@@ -4735,6 +4735,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2136054449}
     m_Modifications:
+    - target: {fileID: 1066872212781882061, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.055
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066872212781882061, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.047
+      objectReference: {fileID: 0}
     - target: {fileID: 1432903594902765167, guid: 1d2a27d7aae56354baf55a214ffb7360, type: 3}
       propertyPath: m_Name
       value: Map Picture Frame
