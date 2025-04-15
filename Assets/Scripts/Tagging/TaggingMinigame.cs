@@ -1,9 +1,8 @@
 using DG.Tweening;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
-using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -34,6 +33,7 @@ public class TaggingMinigame : MonoBehaviour
     [SerializeField] private float gameTime = 60;
     [SerializeField] private GameObject davitModel;
     [SerializeField] private GameObject davitPivotPoint;
+    [SerializeField] private GameObject boat;
 
     [Header("Narration")]
     [SerializeField] private Subtitles subtitles;
@@ -72,16 +72,19 @@ public class TaggingMinigame : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(m_player.transform.position, m_currentTag.transform.position) > 10)
+        if (curState == GameState.tutorial || curState == GameState.game)
         {
-            ResetTag();
+            if (Vector3.Distance(m_player.transform.position, m_currentTag.transform.position) > 10)
+            {
+                ResetTag();
+            }
         }
     }
 
     private void ResetTag()
     {
         Destroy(m_currentTag);
-        m_currentTag = Instantiate(m_tagPrefab, m_tagSpawnPoint.position, m_tagSpawnPoint.rotation);
+        m_currentTag = Instantiate(m_tagPrefab, m_tagSpawnPoint.position, m_tagSpawnPoint.rotation, boat.transform);
         m_tag = m_currentTag.GetComponentInChildren<XRGrabInteractable>();
         m_tag.selectEntered.AddListener(swapActiveLabel);
         m_tag.selectExited.AddListener(swapActiveLabel);
@@ -96,6 +99,7 @@ public class TaggingMinigame : MonoBehaviour
             m_currentTag.GetComponent<XRGrabInteractable>().enabled = false;
             m_currentTag.GetComponent<Rigidbody>().isKinematic = true;
             m_currentTag.transform.position = m_tagPlacedArea.position;
+            m_currentTag.transform.SetParent(m_shark.transform);
 
             turning = StartCoroutine(RotateShark());
         }
@@ -103,13 +107,12 @@ public class TaggingMinigame : MonoBehaviour
 
     private void CreateShark()
     {
-        m_shark = Instantiate(m_sharkPrefab, m_sharkSpawnPoint.position, m_sharkSpawnPoint.rotation);
+        m_shark = Instantiate(m_sharkPrefab, m_sharkSpawnPoint.position, m_sharkSpawnPoint.rotation, boat.transform);
         m_tagPlacedArea = m_sharkPrefab.transform.GetChild(0);
         m_sharkScript = m_shark.GetComponent<TaggingShark>();
 
         m_sharkScript.TagPlaced += PlaceTag;
     }
-
 
     private void DestroyShark()
     {
@@ -162,7 +165,6 @@ public class TaggingMinigame : MonoBehaviour
     private IEnumerator RotateShark()
     {
         m_shark.transform.DOMoveY(21, 0.5f);
-        m_currentTag.transform.DOMoveY(21, 0.5f);
         if (curState == GameState.tutorial)
         {
             subtitles.enqueueNarration(minigameIntro);
@@ -175,17 +177,15 @@ public class TaggingMinigame : MonoBehaviour
             davitModel.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), Time.deltaTime * 20);
             m_shark.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), Time.deltaTime * 20);
             m_sharkSpawnPoint.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), Time.deltaTime * 20);
-            m_currentTag.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), Time.deltaTime * 20);
             if (davitModel.transform.eulerAngles.y > 90)
             {
                 davitModel.transform.eulerAngles = new Vector3(0, 90, 0);
                 m_shark.transform.eulerAngles = new Vector3(0, 90, 0);
-                m_sharkSpawnPoint.transform.eulerAngles = new Vector3(0, 90, 0);
+                break;
             }
             yield return null;
         }
         m_shark.transform.DOMoveY(17, 1f);
-        m_currentTag.transform.DOMoveY(17, 1f);
         yield return new WaitForSeconds(1);
         DestroyShark();
         Coroutine gameStarting;
@@ -202,22 +202,24 @@ public class TaggingMinigame : MonoBehaviour
             ResetTag();
             CreateShark();
         }
-        if (m_shark) m_shark.transform.DOMoveY(21, 0.5f);
+        if (curState != GameState.end) m_shark.transform.DOMoveY(21, 0.5f);
         Debug.Log("left");
         while (davitModel.transform.eulerAngles.y != 0)
         {
             davitModel.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), -(Time.deltaTime * 20));
-            if (m_shark) m_shark.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), -(Time.deltaTime * 20));
+            if (curState != GameState.end) m_shark.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), -(Time.deltaTime * 20));
             m_sharkSpawnPoint.transform.RotateAround(davitPivotPoint.transform.position, new Vector3(0, 1, 0), -Time.deltaTime * 20);
             if (davitModel.transform.eulerAngles.y > 359)
             {
+                Debug.Log("at the end");
                 davitModel.transform.eulerAngles = new Vector3(0, 0, 0);
-                if (m_shark) m_shark.transform.eulerAngles = new Vector3(0, 0, 0);
+                if (curState != GameState.end) m_shark.transform.eulerAngles = new Vector3(0, 0, 0);
                 m_sharkSpawnPoint.transform.eulerAngles = new Vector3(0, 0, 0);
+                break;
             }
             yield return null;
         }
-        if (m_shark) m_shark.transform.DOMoveY(19.956f, 0.5f);
+        if (curState != GameState.end) m_shark.transform.DOMoveY(19.956f, 0.5f);
         turning = null;
 
     }
@@ -243,9 +245,9 @@ public class TaggingMinigame : MonoBehaviour
 
     private IEnumerator GameTimer()
     {
-        timerText.rectTransform.DOMoveX(200, 1);
+        StartCoroutine(tweenColor(timerText, Color.white));
         StaticData.sharksTagged = 0;
-        sharkCounterText.rectTransform.DOMoveX(200, 1);
+        StartCoroutine(tweenColor(sharkCounterText, Color.white));
         sharkCounterText.SetText("0");
         gameTimer = 60;
         while (gameTimer >= 0)
@@ -265,7 +267,19 @@ public class TaggingMinigame : MonoBehaviour
         subtitles.enqueueNarration(outro1);
         subtitles.enqueueNarration(outro2);
         subtitles.enqueueNarration(outro3);
-        return null;
+        yield return null;
+    }
+
+    private IEnumerator tweenColor(TMP_Text text, Color targetColor)
+    {
+        float t = 0;
+        Color startColor = text.color;
+        while (t < 0.5)
+        {
+            text.color = Color.Lerp(startColor, targetColor, t / 0.5f);
+            t += Time.deltaTime;
+            yield return null;
+        }
     }
 
 }

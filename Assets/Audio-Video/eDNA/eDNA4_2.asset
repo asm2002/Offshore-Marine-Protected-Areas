@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c064acff81fac5408d0e9413a8d4c38, type: 3}
+  m_Name: eDNA4_2
+  m_EditorClassIdentifier: 
+  audio: {fileID: 8300000, guid: 48ced78de586c1f4a90112f74b20e9ed, type: 3}
+  subtitle: If you turn to the wall, you'll see the incomplete DNA sequences in our
+    database for three marine animals.
+  duration: 5

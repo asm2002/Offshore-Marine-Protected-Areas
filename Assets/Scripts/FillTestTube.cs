@@ -3,6 +3,7 @@ using UnityEngine;
 public class TestTube : MonoBehaviour
 {
     public GameObject waterFill;
+    public Narration n;
     public bool isFilled = false; // Track if tube is already filled
 
     private void OnTriggerEnter(Collider other)
@@ -20,6 +21,7 @@ public class TestTube : MonoBehaviour
         if (waterFill != null)
         {
             waterFill.SetActive(true);
+            FindObjectOfType<Subtitles>().enqueueNarration(n);
         }
         Debug.Log("Test tube filled with water!");
     }
