@@ -1660,6 +1660,67 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1175988717}
   m_SourcePrefab: {fileID: 100100000, guid: 2d6b31bbb0cc4d74f9eb0dcbe73380be, type: 3}
+--- !u!1001 &398426996
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -81.75751
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 24.628843
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.192307
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57202635748128063, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445474066250447890, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: m_Name
+      value: Menu_Reset Button Script
+      objectReference: {fileID: 0}
+    - target: {fileID: 901980247429953263, guid: 00f92d50844459543932800285507d95, type: 3}
+      propertyPath: transitionObj
+      value: 
+      objectReference: {fileID: 1152368436}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00f92d50844459543932800285507d95, type: 3}
 --- !u!1001 &416150361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7829,3 +7890,4 @@ SceneRoots:
   - {fileID: 887881167}
   - {fileID: 713426329}
   - {fileID: 1152368438}
+  - {fileID: 398426996}
