@@ -1,16 +1,42 @@
-CS4480Y: Game Development Project
-Dylan Patrascu
-Emma Denise Suganda
-Aidan Bell
-Samuel Gebretsion
-Andrew Mohammad
+# CS4480Y: Game Development Project  
+**VR Marine Biology Simulation**
 
-This VR simulation lets users roleplay as a marine biologist exploring offshore marine protected areas. Designed for public spaces like aquariums, it's gesture-based and kid-friendly, with minimal movement required. Players complete simplified research tasks like tagging sharks, collecting environmental DNA, and deploying underwater cameras.
+## Team Members
+- Dylan Patrascu  
+- Emma Denise Suganda  
+- Aidan Bell  
+- Samuel Gebretsion  
+- Andrew Mohammad  
 
-HOW TO RUN (NO HEADSET):
-Open project in Unity 2022.3.46f1
-Navigate to Assets/Scenes and launch the "Start Screen" scene
-Switch over to the Game window to play in the editor (Unity should automatically display an XR controller simulator so that you can play without a headset.
+## Project Overview
 
-HOW TO RUN (HEADSET):
-Add the application to the Meta Quest system using Side Quest and then run it from the applications window. Interact with the menu using the trigger and use the grab button to interact with items in the game.
+This virtual reality simulation allows users to roleplay as a **marine biologist** exploring **offshore marine protected areas**. Designed for **public spaces** like aquariums, the experience is:
+
+- **Gesture-based**  
+- **Kid-friendly**  
+- Requires **minimal physical movement**
+
+Players complete simplified scientific tasks such as:
+
+- Tagging sharks  
+- Collecting environmental DNA  
+- Deploying underwater cameras  
+
+## How to Run (No Headset Required)
+
+1. Open the project in **Unity 2022.3.46f1**  
+2. Navigate to `Assets/Scenes`  
+3. Launch the scene named **"Start Screen"**  
+4. Switch to the **Game** window to play inside the Unity Editor  
+   - Unity should automatically display an **XR Controller Simulator**, allowing you to interact without a headset  
+
+## How to Run (With Meta Quest Headset)
+
+1. Add the application to your **Meta Quest** using **SideQuest**  
+2. Launch it from the **Applications** window on the headset  
+3. Interact with the menu using the **trigger button**  
+4. Use the **grab button** to interact with in-game objects  
+
+---
+
+> Created as part of **CS4480Y: Game Development** at [The University of Western Ontario]  
